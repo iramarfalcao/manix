@@ -1,5 +1,6 @@
-import { readFileSync, writeFileSync, promises as fsPromises } from 'fs';
+import fs, { readFileSync, writeFileSync, promises as fsPromises } from 'fs';
 import { join } from 'path';
+import readline from 'readline';
 
 export class File {
 
@@ -46,5 +47,23 @@ export class File {
 
     static asyncReadFile(filename: string) {
         return fsPromises.readFile(join('input', filename), 'utf-8');
+    }
+
+    static async readFileByLine({ filename, func = false }: { filename: string, func?: Function | boolean }) {
+
+        const fileStream = fs.createReadStream(join('input', filename));
+        const rl = readline.createInterface({
+            input: fileStream,
+            crlfDelay: Infinity
+        });
+
+        for await (const line of rl) {
+            if (func) {
+                console.log('haveFunction()');
+            } else {
+                console.log('=================');
+                console.log(line);
+            }
+        }
     }
 }

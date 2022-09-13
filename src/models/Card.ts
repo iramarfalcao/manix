@@ -5,11 +5,12 @@ export class Card {
     // this.idCard = id;
     // }
 
-    public sumDigits(digit: number) {
-        if (digit < 9) {
-            return digit;
+    public static sumDigits(digit: number): number {
+        if (digit > 9) {
+            digit = digit % 10 + 1
+            return this.sumDigits(digit);
         } else {
-            return digit % 10 + 1;
+            return digit;
         }
     }
 
