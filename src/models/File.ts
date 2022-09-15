@@ -15,7 +15,7 @@ export class File {
 
         const contents = this.syncReadFile(filename);
 
-        console.log(contents); // 👉️ "One Two Three Four"
+        // console.log(contents); // 👉️ "One Two Three Four"
 
         return contents;
     }
@@ -32,7 +32,7 @@ export class File {
 
             const contents = await this.asyncReadFile(filename);
 
-            console.log(contents); // 👉️ "One Two Three Four"
+            // console.log(contents); // 👉️ "One Two Three Four"
 
             return contents;
         } catch (err) {
@@ -57,8 +57,6 @@ export class File {
         const data: Array<string> = [];
 
         for await (const line of rl) {
-            // console.log('=================');
-            // console.log(line);
             data.push(line);
         }
 

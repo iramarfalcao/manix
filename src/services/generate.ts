@@ -32,7 +32,7 @@ const generate = async () => {
         console.log('--------------------------------------------------------');
 
         if (card.valid) {
-            File.syncWriteFile({ filename: './valid_cards.txt', data: card.cardNumber+'\n', flag: 'a' });
+            File.syncWriteFile({ filename: './valid_cards.txt', data: card.cardNumber+'/n', flag: 'a' });
         }
 
         // console.log(card);
