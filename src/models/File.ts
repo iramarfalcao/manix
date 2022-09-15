@@ -49,21 +49,19 @@ export class File {
         return fsPromises.readFile(join('input', filename), 'utf-8');
     }
 
-    static async readFileByLine({ filename, func = false }: { filename: string, func?: Function | boolean }) {
+    static async readFileByLine({ filename }: { filename: string }) {
 
         const fileStream = fs.createReadStream(join('input', filename));
-        const rl = readline.createInterface({
-            input: fileStream,
-            crlfDelay: Infinity
-        });
+        const rl = readline.createInterface({ input: fileStream, crlfDelay: Infinity });
+
+        const data: Array<string> = [];
 
         for await (const line of rl) {
-            if (func) {
-                console.log('haveFunction()');
-            } else {
-                console.log('=================');
-                console.log(line);
-            }
+            // console.log('=================');
+            // console.log(line);
+            data.push(line);
         }
+
+        return data;
     }
 }

@@ -1,20 +1,17 @@
+import { Luhn } from "./Lunh";
+
 export class Card {
-    // idCard: string;
+    cardNumber: string;
+    brand: string | undefined;
+    valid: boolean;
 
-    // constructor(id: string) {
-    // this.idCard = id;
-    // }
-
-    public static sumDigits(digit: number): number {
-        if (digit > 9) {
-            digit = digit % 10 + 1
-            return this.sumDigits(digit);
-        } else {
-            return digit;
-        }
+    constructor(cardNumber: string) {
+        this.cardNumber = cardNumber;
+        this.brand = this.getCardBrand(cardNumber);
+        this.valid = this.validateCard(cardNumber);
     }
 
-    public static getCardBrand(credidCardNumber: string) {
+    private getCardBrand(cardNumber: string) {
 
         let re = [
             { brand: 'electron', pattern: /^(4026|417500|4405|4508|4844|4913|4917)\d+$/ },
@@ -31,9 +28,13 @@ export class Card {
         ]
 
         for (var key in re) {
-            if (re[key].pattern.test(credidCardNumber)) {
+            if (re[key].pattern.test(cardNumber)) {
                 return re[key].brand;
             }
         }
+    }
+
+    private validateCard(cardNumber: string): boolean {
+        return Luhn.validate(cardNumber);
     }
 }
