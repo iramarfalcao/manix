@@ -11,15 +11,17 @@
   "author": "Iramar Falcão",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.27.2",
     "chalk": "^4.1.2",
+    "cheerio": "^1.0.0-rc.12",
     "clear": "^0.1.0",
     "commander": "^9.4.0",
     "figlet": "^1.5.2",
     "path": "^0.12.7"
   },
   "devDependencies": {
-    "@types/commander": "^2.12.2",
     "@types/clear": "^0.1.2",
+    "@types/commander": "^2.12.2",
     "@types/figlet": "^1.5.5",
     "@types/node": "^18.7.16",
     "ts-node": "^10.9.1",

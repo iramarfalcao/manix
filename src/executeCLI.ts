@@ -2,6 +2,7 @@
 
 import { createCommand } from 'commander';
 import generate from './services/generate';
+import getMovies from './services/movieScraper';
 import validate from './services/validate';
 
 const executeCLI = () => {
@@ -13,7 +14,9 @@ const executeCLI = () => {
     .description("A CLI for Belzebú CC")
     .option('-g, --generate', 'Generate Numbers', generate)
     .option('-vf, --validate-file', 'Validate Input File', validate)
-    .option('-P, --pineapple', 'Add pineapple')
+
+    .option('-gm, --get-movies', 'Test get Movies', getMovies)
+    // .option('-P, --pineapple', 'Add pineapple')
     //   .option('-b, --bbq <asd...>', 'Add bbq sauce')
     //   .option('-c, --cheese <type>', 'Add the specified type of cheese [marble]')
     //   .option('-C, --no-cheese', 'You do not want any cheese')
