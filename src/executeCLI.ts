@@ -1,11 +1,21 @@
 #!/usr/bin/env node
 
-import { createCommand } from 'commander';
+import chalk from 'chalk';
+import clear from 'clear';
+import figlet from 'figlet';
 import generate from './services/generate';
 import getMovies from './services/movieScraper';
 import validate from './services/validate';
+import { createCommand } from 'commander';
 
-const executeCLI = () => {
+export const init = () => {
+  clear();
+  console.log(chalk.green(figlet.textSync('MANIX - Belzebú', { horizontalLayout: 'full' })));
+}
+
+export default init;
+
+export const executeCLI = () => {
 
   const program = createCommand();
 
@@ -29,5 +39,3 @@ const executeCLI = () => {
     program.outputHelp();
   }
 }
-
-export default executeCLI;
