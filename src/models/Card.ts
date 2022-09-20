@@ -34,7 +34,5 @@ export class Card {
         }
     }
 
-    private validateCard(cardNumber: string): boolean {
-        return Luhn.validate(cardNumber);
-    }
+    private validateCard(cardNumber: string): boolean { return Luhn.validate(cardNumber) };
 }
